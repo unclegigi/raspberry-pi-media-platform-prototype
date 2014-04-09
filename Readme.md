@@ -1,7 +1,11 @@
-﻿## Links
+﻿## raspberry pi media platform prototype
 
-* Install Nodejs on Raspberry PI
-http://joshondesign.com/2013/10/23/noderpi
+!!! only a prototype !!!
+
+## Links
+
+* omxplayer http://omxplayer.sconde.net/ https://github.com/huceke/omxplayer/
+* Install Nodejs on Raspberry PI http://joshondesign.com/2013/10/23/noderpi
 
 ## License
 
