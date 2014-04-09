@@ -3,7 +3,39 @@
 <head>
 	<title>raspberry-pi-media-platform-prototype - OMX Control Test</title>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script>
+	$(function() {
+		$("#play").click(function(){
+			var file = $("#file").val();
+			$("#file").prop('disabled', true);
+
+			console.log("play " + file)
+
+		    $.get( "/omx/start/" + file, function( data ) {
+		    	console.log("play " + file + " > " + data);
+			});
+
+		});
+		$("#pause").click(function(){
+		    var file = $("#file").val();
+			console.log("pause " + file);
+ 			$.get( "/omx/pause", function( data ) {
+		    	console.log("pause " + file + " > " + data);
+			});
+		});
+		$("#stop").click(function(){
+			var file = $("#file").val();
+			console.log("stop " + file);
+ 			$.get( "/omx/quit", function( data ) {
+				$("#file").val("");
+		   		 $("#file").prop('disabled', false);
+		    	console.log("stop " + file + " > " + data);
+			});
+		});
+	});
+	</script>
 	<style>
 	body {
 		margin: 50px;
@@ -12,8 +44,16 @@
 </head>
 <body>
 	<h2>omxplayer control</h2><br />
-	<a href='http://localhost/omx/start/Test.mp4'>Play Test.mp4</a><br />
-	<a href='http://localhost/omx/pause'>Pause</a><br />
-	<a href='http://localhost/omx/quit'>Quit</a>
+
+
+ 	<form class="form-inline" role="form">
+  <div class="form-group">
+    <label class="sr-only" for="file">File</label>
+    <input type="text" class="form-control" id="file" placeholder="MP4 File on /mnt/smb">
+  </div>
+  <button type="button" class="btn btn-default" id="play"><span class="glyphicon glyphicon-play"></span></button>
+  <button type="button" class="btn btn-default" id="pause"><span class="glyphicon glyphicon-pause"></span></button> 
+  <button type="button" class="btn btn-default" id="stop"><span class="glyphicon glyphicon-stop"></span></button>
+</form>
 </body>
 </html>
