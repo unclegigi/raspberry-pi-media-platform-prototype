@@ -8,5 +8,5 @@ app.get('/', function(req, res){
     res.sendfile("./views/index.html")
 });
 
-app.listen(80);
+app.listen(3000);
 console.log("Server http://localhost/")
