@@ -24,4 +24,4 @@ app.get("/player/pause/:file", function(req, res) {
 });
 
 app.listen(3000);
-console.log("Server http://localhost/")
+console.log("Server started.")
